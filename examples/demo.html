@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<title>Agent Scope Diff · Comparison</title><style>
+:root{color-scheme:dark;--bg:#10121e;--panel:#171b2b;--edge:#333952;--ink:#f0effb;--muted:#b9bfd7;--green:#9becbd;--pink:#f4a8d8;--yellow:#ffd695;--accent:#beaaff}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 15% 0,#29224a 0,transparent 52%),var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{max-width:1040px;margin:auto;padding:clamp(24px,6vw,72px) clamp(16px,4vw,42px)}
+header{margin-bottom:26px}
+.kicker,.tag,th,.stat span{font-size:.71rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.kicker{color:var(--accent)}
+h1{font-size:clamp(2.35rem,6vw,4.5rem);letter-spacing:-.07em;line-height:1.04;margin:12px 0}
+p{margin:0;color:var(--muted)}
+.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0}
+.stat,.board{border:1px solid var(--edge);border-radius:14px;background:var(--panel)}
+.stat{padding:13px 16px}.stat strong{display:block;font-size:1.8rem;line-height:1.1;margin-bottom:4px}.stat span{color:var(--muted);letter-spacing:.06em}
+.board{padding:clamp(12px,3vw,24px)}
+table{border-collapse:collapse;width:100%;table-layout:fixed;text-align:left}
+th,td{padding:12px 8px;vertical-align:top;overflow-wrap:anywhere}
+th:first-child{width:43%}
+th{color:var(--muted);border-bottom:1px solid var(--edge);font-size:.75rem}
+td{border-bottom:1px solid var(--edge)}
+tbody tr:last-child td{border-bottom:0}
+code,.loc{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.loc{display:block;letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px;font-size:.92rem}
+.tag{display:inline-block;color:var(--muted);letter-spacing:.05em}.good{color:var(--green)}.skip{color:var(--pink)}.warn{color:var(--yellow)}
+.count,.foot{color:var(--muted);font-size:.86rem}
+.count{display:block}.foot{margin-top:16px}
+@media(max-width:540px){.summary{gap:6px}.stat{padding:9px}.stat span{font-size:.61rem}th,td{padding:8px 4px;font-size:.78rem}.count{font-size:.69rem}.tag{font-size:.62rem}}
+@media print{:root{color-scheme:light;--ink:#151526;--muted:#363649;--panel:#fff;--edge:#bcc0c9;--accent:#452279;--green:#005432;--pink:#860340;--yellow:#825000}body{background:#fff}main{padding:0}}
+</style></head>
+<body><main>
+<header><div class="kicker">Agent Scope Diff / Codex CLI preview</div>
+<h1>Same repo.<br>Different rules.</h1>
+<p>See which instruction files each launch directory would load, skip, or truncate.</p></header>
+<section class="summary" aria-label="Summary">
+<div class="stat"><strong>3</strong><span>Instruction differences</span></div>
+<div class="stat"><strong>148 B</strong><span>Left project budget used</span></div>
+<div class="stat"><strong>93 B</strong><span>Right project budget used</span></div>
+</section>
+<section class="board" aria-label="Instruction comparison">
+<table><thead><tr><th scope="col">Instruction file</th>
+<th scope="col">Left <span class="loc">./apps/web</span><span class="count">32,768 B limit</span></th>
+<th scope="col">Right <span class="loc">./apps/api</span><span class="count">32,768 B limit</span></th>
+</tr></thead><tbody><tr><td><code>$CODEX_HOME/AGENTS.md</code></td><td><span class="tag good">picked</span><span class="count">47 B included</span></td><td><span class="tag good">picked</span><span class="count">47 B included</span></td></tr>
+<tr><td><code>./AGENTS.md</code></td><td><span class="tag good">picked</span><span class="count">62 B included</span></td><td><span class="tag good">picked</span><span class="count">62 B included</span></td></tr>
+<tr><td><code>./apps/api/AGENTS.md</code></td><td><span class="tag">Not in scope</span></td><td><span class="tag good">picked</span><span class="count">31 B included</span></td></tr>
+<tr><td><code>./apps/web/AGENTS.md</code></td><td><span class="tag skip">shadowed</span></td><td><span class="tag">Not in scope</span></td></tr>
+<tr><td><code>./apps/web/AGENTS.override.md</code></td><td><span class="tag good">picked</span><span class="count">86 B included</span></td><td><span class="tag">Not in scope</span></td></tr></tbody></table></section>
+<p class="foot">Local simulation. File contents, full machine paths and warning details are omitted. Review relative filenames before sharing.</p>
+</main></body></html>
